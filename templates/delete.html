@@ -1,0 +1,40 @@
+{% extends "base.html" %}  <!-- This extends the base layout template (base.html) -->
+
+{% block content %}  <!-- The content block where specific page content will go -->
+
+<!-- Main Container for the Page -->
+<div class="container-fluid">
+    <!-- Empty container, could be used for global layout or spacing -->
+</div>
+
+<!-- Container for the confirmation card, with margin-top for spacing -->
+<div class="container mt-5">
+    <!-- Center the content horizontally using the 'justify-content-center' class -->
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <!-- Card to display the confirmation message -->
+            <div class="card shadow">
+                <div class="card-body text-center">
+                    <!-- Confirmation Title -->
+                    <h4>Confirm Deletion</h4>
+                    
+                    <!-- Confirmation message, with the task name displayed dynamically -->
+                    <p>Are you sure you want to delete the task <b>"{{ task2.name }}"</b>?</p>
+                    
+                    <!-- Form to submit the deletion action -->
+                    <form method="POST">
+                        {% csrf_token %}  <!-- CSRF Token for protection against Cross-Site Request Forgery -->
+                        
+                        <!-- Button to confirm deletion -->
+                        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                        
+                        <!-- Link to cancel and redirect back to the home page -->
+                        <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}  <!-- End of the content block -->

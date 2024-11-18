@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}  <!-- Load static files for Django (used for linking CSS, JS, images) -->
+<html lang="en">
+<head>
+    <!-- Meta Tags for Charset and Responsive Design -->
+    <meta charset="UTF-8">  <!-- Character encoding for the page -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes the page responsive for different devices -->
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+          rel="stylesheet" 
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+          crossorigin="anonymous">
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="{% static 'css/style.css'%}"> <!-- Links to the custom style.css file from the static folder -->
+
+    <!-- Title of the webpage -->
+    <title>TODO</title>
+</head>
+<body>
+    <!-- Main Container for the Page -->
+    <div class="container-fluid">  
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Banner Section: Displays the title -->
+                <div class="banner">         
+                    <center><h1>TODO</h1></center>  <!-- The main heading of the page -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Block: Placeholder for the dynamic content of the page -->
+    {% block content %}  <!-- This block will be filled with content from other templates -->
+    {% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+
+/* Banner Section: Styles for the banner */
+.banner {
+    background-color: bisque;  /* Set the background color of the banner */
+    width: 100%;                /* Make the banner take up 100% of the width of the parent container */
+    height: 200px;             /* Set the height of the banner to 200px */
+    margin-bottom: 50px;      /* Add 50px margin below the banner */
+}
+
+/* Heading 1 Section: Styles for <h1> elements */
+h1 {
+    color: red;                /* Set the text color of <h1> elements to red */
+}

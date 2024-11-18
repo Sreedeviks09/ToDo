@@ -1,0 +1,57 @@
+{% extends "base.html" %}  <!-- This extends a base template, typically used for common layout structure like header, footer, etc. -->
+
+{% block content %}  <!-- This is where the page-specific content is injected into the base template -->
+
+<div class="container">  <!-- This creates a container for the content inside a Bootstrap layout -->
+
+    <div class="row">  <!-- This creates a row to hold the two columns -->
+    
+        <div class="col-md-6">  <!-- The first column (form section) takes up half the screen on medium and larger devices -->
+            <form method="POST" class="p-3 shadow">  <!-- POST method is used for form submission and 'p-3 shadow' adds padding and shadow -->
+            {% csrf_token %}  <!-- This is a CSRF token for protection against cross-site request forgery attacks -->
+            
+                <!-- Task Name input field -->
+                <div class="form-group mb-3">  <!-- A Bootstrap class for styling form groups -->
+                    <input type="text" required="require" name="name" class="form-control" placeholder="Enter the Task Name">  <!-- This input field is for the task name -->
+                </div> 
+                
+                <!-- Task Priority input field -->
+                <div class="form-group mb-3">
+                    <input type="text" required="require" name="priority" class="form-control" placeholder="Enter the Priority">  <!-- This input field is for task priority -->
+                </div>
+                
+                <!-- Task Date input field -->
+                <div class="form-group mb-3">
+                    <input type="date" required="require" name="date" class="form-control" placeholder="Enter the date">  <!-- This input field is for task date -->
+                </div>
+
+                <!-- Submit button for form submission -->
+                <input type="Submit" class="btn btn-success mb-3">  <!-- A button to submit the form -->
+            </form>
+        </div>
+        
+        <div class="col-md-6">  <!-- The second column (task list) also takes up half the screen on medium and larger devices -->
+            {% for i in task1 %}  <!-- Loop over the tasks passed from the view and display each task -->
+            
+            <div class="shadow card">  <!-- A Bootstrap card element to display each task with shadow for better visual -->
+                <div class="card-body">  <!-- The body of the card -->
+                    <h5 class="card-title">{{i.name}}</h5>  <!-- Display the task name -->
+                    <p><b>{{i.priority}}</b></p>  <!-- Display the task priority in bold -->
+                    <h6>{{i.date}}</h6>  <!-- Display the task date -->
+                    
+                    <!-- Delete button with a link to the 'delete' view for the current task -->
+                    <a class="btn btn-danger mb-3" href="{% url 'delete' i.id %}">Delete</a>
+                    
+                    <!-- Update button with a link to the 'update' view for the current task -->
+                    <a class="btn btn-success mb-3" href="{% url 'update' i.id %}">Update</a>
+                    
+                    <br>  <!-- Line break for spacing -->
+                    
+                </div>
+            </div>
+            {% endfor %}  <!-- End of the loop to display each task -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}  <!-- End of the block content, which is injected into the base template -->
