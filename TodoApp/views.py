@@ -22,7 +22,7 @@ def Taskadd(request):
         task.save()
         
     # Rendering the home page (home.html) and passing the tasks to display
-    return render(request, 'home.html', {'task1': task1})
+    return render(request, 'index.html', {'task1': task1})
 
 # View to handle deleting a task
 def delete(request, taskId):
